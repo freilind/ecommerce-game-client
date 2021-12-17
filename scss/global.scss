@@ -1,0 +1,22 @@
+@import './index.scss';
+
+.ui.form {
+    .ui.input {
+        input {
+            border: 0.063em solid $border-grey-light;
+            font-size: 1rem;
+        }
+    }
+
+    .actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .ui.button.submit {
+        background-color: $primary;
+        color: $font-light;
+        margin: 0em;
+    }
+}

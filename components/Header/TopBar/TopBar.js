@@ -12,7 +12,6 @@ const TopBar = () => {
             <Icon name="chess" color="green" size="big" />
           </Grid.Column>
           <Grid.Column width={8} className="top-bar__right">
-            <Icon name="keyboard outline" color="green" size="big" />
             <Search />
           </Grid.Column>
         </Grid>

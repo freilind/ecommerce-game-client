@@ -1,0 +1,30 @@
+.list-address {
+  padding: 0.625em;
+
+  .address {
+    padding: 0.625em;
+    margin: 0.625em 0 0.625em 0;
+    border: 0.063em solid $border-grey-light;
+    border-radius: 0.313em;
+
+    p {
+      margin-bottom: 0.313em;
+
+      &:first-of-type {
+        font-weight: bold;
+        border-bottom: 0.063em solid $border-grey-light;
+        margin-bottom: 0.625em;
+        font-size: 1rem;
+      }
+    }
+
+    .actions {
+      margin-top: 1.25em;
+
+      .ui.button.primary {
+        background-color: $primary;
+        color: $font-light;
+      }
+    }
+  }
+}

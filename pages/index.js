@@ -1,5 +1,7 @@
 import BasicLayout from "../layouts/BasicLayout";
 
-export default function Home() {
+const Home = () => {
   return <BasicLayout className="home">nextjs</BasicLayout>;
-}
+};
+
+export default Home;

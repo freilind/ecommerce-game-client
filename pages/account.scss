@@ -1,0 +1,34 @@
+.account {
+    &__configuration,
+    &__addresses {
+      position: relative;
+      padding: 0.625em;
+  
+      .title {
+        width: max-content;
+        background-color: $background-grey-dark;
+        color: $font-light;
+        padding: 0.313em 0.625em;
+        border-radius: 0.313em 0.313em 0 0;
+      }
+  
+      .data {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        background-color: $background-light;
+        box-shadow: 0.063em 0.063em 0.125 0 rgba(0, 0, 0, 0.1);
+      }
+    }
+  
+    &__addresses {
+      .title {
+        i {
+          position: absolute;
+          right: 0.625em;
+          color: $font-dark;
+        }
+      }
+    }
+  }
+  

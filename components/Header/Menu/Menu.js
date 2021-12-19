@@ -1,21 +1,30 @@
 import { useState, useEffect } from "react";
 import { Container, Menu, Grid, Icon } from "semantic-ui-react";
 import Link from "next/link";
+import { map } from "lodash";
 import BasicModal from "../../Modal/BasicModal";
 import Auth from "../../Auth";
 import useAuth from "../../../hooks/useAuth";
 import { getMeApi } from "../../../api/user";
+import { getPlatformsApi } from "../../../api/platform";
 
 const MenuWeb = () => {
   const [showModal, setShowModal] = useState(false);
   const [titleModal, setTitleModal] = useState("Sign in");
+  const [platforms, setPlatforms] = useState([]);
   const [user, setUser] = useState(undefined);
   const { auth, logout } = useAuth();
 
   useEffect(() => {
     (async () => {
+      const response = await getPlatformsApi();
+      setPlatforms(response || []);
+    })();
+  }, []);
+
+  useEffect(() => {
+    (async () => {
       const response = await getMeApi(logout);
-      console.log(response);
       setUser(response);
     })();
   }, [auth]);
@@ -27,7 +36,7 @@ const MenuWeb = () => {
       <Container>
         <Grid>
           <Grid.Column className="menu__left" width={6}>
-            <MenuPlatform />
+            <MenuPlatforms platforms={platforms} />
           </Grid.Column>
           <Grid.Column className="menu__right" width={10}>
             {user !== undefined && (
@@ -52,17 +61,15 @@ const MenuWeb = () => {
   );
 };
 
-const MenuPlatform = () => (
+const MenuPlatforms = ({ platforms }) => (
   <Menu>
-    <Link href="/play-station">
-      <Menu.Item as="a">PlayStation</Menu.Item>
-    </Link>
-    <Link href="/xbox">
-      <Menu.Item as="a">Xbox</Menu.Item>
-    </Link>
-    <Link href="/switch">
-      <Menu.Item as="a">Switch</Menu.Item>
-    </Link>
+    {map(platforms, (platform) => (
+      <Link href={`/games/${platform.url}`} key={platform._id}>
+        <Menu.Item as="a" name={platform.url}>
+          {platform.title}
+        </Menu.Item>
+      </Link>
+    ))}
   </Menu>
 );
 

@@ -3,18 +3,17 @@ import { size, includes, remove } from "lodash";
 import { BASE_PATH, CART } from "../utils/constants";
 import { authFetch } from "../utils/fetch";
 
-export function getProductsCart() {
+export const getProductsCart = () => {
   const cart = localStorage.getItem(CART);
 
   if (!cart) {
     return null;
   } else {
-    const products = cart.split(",");
-    return products;
+    return cart.split(",");
   }
-}
+};
 
-export function addProductCart(product) {
+export const addProductCart = (product) => {
   const cart = getProductsCart();
 
   if (!cart) {
@@ -30,9 +29,9 @@ export function addProductCart(product) {
       toast.success("Producto añadido correctamente");
     }
   }
-}
+};
 
-export function countProductsCart() {
+export const countProductsCart = () => {
   const cart = getProductsCart();
 
   if (!cart) {
@@ -40,9 +39,9 @@ export function countProductsCart() {
   } else {
     return size(cart);
   }
-}
+};
 
-export function removeProductCart(product) {
+export const removeProductCart = (product) => {
   const cart = getProductsCart();
 
   remove(cart, (item) => {
@@ -54,9 +53,15 @@ export function removeProductCart(product) {
   } else {
     localStorage.removeItem(CART);
   }
-}
+};
 
-export async function paymentCartApi(token, products, idUser, address, logout) {
+export const paymentCartApi = async (
+  token,
+  products,
+  idUser,
+  address,
+  logout
+) => {
   try {
     const addressShipping = address;
     delete addressShipping.user;
@@ -75,14 +80,13 @@ export async function paymentCartApi(token, products, idUser, address, logout) {
         addressShipping,
       }),
     };
-    const result = await authFetch(url, params, logout);
-    return result;
+    return await authFetch(url, params, logout);
   } catch (error) {
     console.log(error);
     return null;
   }
-}
+};
 
-export function removeAllProductsCart() {
+export const removeAllProductsCart = () => {
   localStorage.removeItem(CART);
-}
+};

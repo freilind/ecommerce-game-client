@@ -1,0 +1,112 @@
+.header-game {
+  &.ui.grid {
+    margin: 0em;
+  }
+
+  &__title {
+    position: relative;
+    background-color: $background-dark-absolute;
+    padding: 0.625em 0em;
+    color: $font-light;
+    text-align: center;
+    font-weight: bold;
+
+    i.icon {
+      position: absolute;
+      height: 100%;
+      top: 0em;
+      right: 0.5em;
+      display: flex;
+      align-items: center;
+      font-size: 1.125rem;
+      opacity: 1 !important;
+
+      &.like {
+        color: $primary;
+      }
+    }
+  }
+
+  &__delivery {
+    text-align: center;
+    color: $primary;
+    font-weight: bold;
+    font-size: 1.125rem;
+    padding: 0.556em 0em;
+  }
+
+  &__summary {
+    background-color: $background-light;
+    padding: 1.429em;
+    font-size: 0.875rem;
+  }
+
+  &__buy {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $background-dark-absolute;
+    color: $font-light;
+    padding: 0.938em 1.25em;
+    margin-top: 0.938em;
+
+    &-price {
+      display: flex;
+      flex-direction: column;
+
+      > p {
+        color: $font-grey;
+        margin: 0em;
+      }
+
+      &-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+
+        > p {
+          margin: 0em;
+          font-weight: bold;
+
+          &:first-of-type {
+            font-size: 1.563rem;
+            margin-right: 0.5em;
+          }
+
+          &:last-of-type {
+            font-size: 2.5rem;
+            color: $primary;
+          }
+        }
+      }
+    }
+
+    &-btn.ui.button {
+      position: relative;
+      width: 10em;
+      background-color: $primary !important;
+      color: $font-light !important;
+      font-size: 1.125rem;
+      padding: 1.056em 0em;
+      left: -1.111em;
+      transition: 0.2s;
+
+      &:hover {
+        left: -0.556em;
+      }
+
+      &:after {
+        position: absolute;
+        top: 0.556em;
+        right: -0.833em;
+        width: 2em;
+        height: 2em;
+        border-radius: 0.556em 0.222em 0.556em 0em;
+        -ms-transform: rotate(45deg) skew(15deg, 15deg);
+        transform: rotate(45deg) skew(15deg, 15deg);
+        background-color: $primary;
+        content: "";
+      }
+    }
+  }
+}

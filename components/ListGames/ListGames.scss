@@ -1,0 +1,55 @@
+.list-games {
+  &__game {
+    padding: 0.938em;
+    &:hover {
+      opacity: 0.9;
+    }
+
+    img {
+      aspect-ratio: 2/3;
+      width: 100%;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 0.313em;
+      font-size: 0.938em;
+      color: $font-grey;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      padding: 0em 0.625em;
+    }
+
+    &-poster {
+      position: relative;
+
+      &-info {
+        position: absolute;
+        width: 100%;
+        bottom: 0em;
+        left: 0em;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        box-shadow: inset 0em -2.688em 0.938em -1.375em rgba(0, 0, 0, 0.75);
+        height: 3.125em;
+
+        .discount {
+          background-color: $primary;
+          color: $font-light;
+          font-size: 0.813rem;
+          padding: 0.077em 0.462em;
+        }
+
+        .price {
+          background-color: $success;
+          opacity: 0.8;
+          color: $font-light;
+          padding: 0em 0.278em 0.167em 0em;
+          font-size: 1.125rem;
+        }
+      }
+    }
+  }
+}

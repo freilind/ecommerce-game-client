@@ -2,7 +2,7 @@ import { BASE_PATH } from "../utils/constants";
 import { authFetch } from "../utils/fetch";
 import { size } from "lodash";
 
-export async function isFavoriteApi(idUser, idGame, logout) {
+export const isFavoriteApi = async (idUser, idGame, logout) => {
   try {
     const url = `${BASE_PATH}/favorites?user=${idUser}&game=${idGame}`;
     return await authFetch(url, null, logout);
@@ -10,13 +10,13 @@ export async function isFavoriteApi(idUser, idGame, logout) {
     console.log(error);
     return null;
   }
-}
+};
 
-export async function addFavoriteApi(idUser, idGame, logout) {
+export const addFavoriteApi = async (idUser, idGame, logout) => {
   try {
     const dataFound = await isFavoriteApi(idUser, idGame, logout);
     if (size(dataFound) > 0 || !dataFound) {
-      return "Este juego ya lo tienes en tu lista de favoritos";
+      return "You already have this game in your favorites list.";
     } else {
       const url = `${BASE_PATH}/favorites`;
       const params = {
@@ -26,16 +26,15 @@ export async function addFavoriteApi(idUser, idGame, logout) {
         },
         body: JSON.stringify({ user: idUser, game: idGame }),
       };
-      const result = await authFetch(url, params, logout);
-      return result;
+      return await authFetch(url, params, logout);
     }
   } catch (error) {
     console.log(error);
     return null;
   }
-}
+};
 
-export async function deleteFavoriteApi(idUser, idGame, logout) {
+export const deleteFavoriteApi = async (idUser, idGame, logout) => {
   try {
     const dataFound = await isFavoriteApi(idUser, idGame, logout);
     if (size(dataFound) > 0) {
@@ -46,22 +45,20 @@ export async function deleteFavoriteApi(idUser, idGame, logout) {
           "Content-Type": "application/json",
         },
       };
-      const result = authFetch(url, params, logout);
-      return result;
+      return await authFetch(url, params, logout);
     }
   } catch (error) {
     console.log(error);
     return null;
   }
-}
+};
 
-export async function getFavoriteApi(idUser, logout) {
+export const getFavoriteApi = async (idUser, logout) => {
   try {
     const url = `${BASE_PATH}/favorites?user=${idUser}`;
-    const result = await authFetch(url, null, logout);
-    return result;
+    return await authFetch(url, null, logout);
   } catch (error) {
     console.log(error);
     return null;
   }
-}
+};

@@ -1,0 +1,23 @@
+.info-game {
+  overflow: hidden;
+
+  &__video {
+    width: 100% !important;
+    height: 38.75em !important;
+  }
+
+  &__content {
+    padding: 0.875em;
+    color: $font-grey;
+
+    &-date {
+      display: flex;
+      margin-top: 1.25em;
+
+      h4 {
+        color: $primary;
+        margin-right: 0.625em;
+      }
+    }
+  }
+}

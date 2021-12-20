@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import { Container, Menu, Grid, Icon } from "semantic-ui-react";
+import { Container, Menu, Grid, Icon, Label } from "semantic-ui-react";
 import Link from "next/link";
 import { map } from "lodash";
 import BasicModal from "../../Modal/BasicModal";
 import Auth from "../../Auth";
 import useAuth from "../../../hooks/useAuth";
+import useCart from "../../../hooks/useCart";
 import { getMeApi } from "../../../api/user";
 import { getPlatformsApi } from "../../../api/platform";
 
@@ -73,48 +74,56 @@ const MenuPlatforms = ({ platforms }) => (
   </Menu>
 );
 
-const MenuOptions = ({ onShowModal, user, logout }) => (
-  <Menu>
-    {user ? (
-      <>
-        <Link href="/orders">
-          <Menu.Item as="a">
-            <Icon name="game" />
-            Orders
-          </Menu.Item>
-        </Link>
+const MenuOptions = ({ onShowModal, user, logout }) => {
+  const { productsCart } = useCart();
+  return (
+    <Menu>
+      {user ? (
+        <>
+          <Link href="/orders">
+            <Menu.Item as="a">
+              <Icon name="game" />
+              Orders
+            </Menu.Item>
+          </Link>
 
-        <Link href="/whislist">
-          <Menu.Item as="a">
-            <Icon name="heart outline" />
-            Wish List
-          </Menu.Item>
-        </Link>
+          <Link href="/wishlist">
+            <Menu.Item as="a">
+              <Icon name="heart outline" />
+              Wish List
+            </Menu.Item>
+          </Link>
 
-        <Link href="/account">
-          <Menu.Item as="a">
-            <Icon name="user outline" />
-            {user.name} {user.lastname}
-          </Menu.Item>
-        </Link>
+          <Link href="/account">
+            <Menu.Item as="a">
+              <Icon name="user outline" />
+              {user.name} {user.lastname}
+            </Menu.Item>
+          </Link>
 
-        <Link href="/cart">
-          <Menu.Item as="a" className="m-0">
-            <Icon name="cart" />
-          </Menu.Item>
-        </Link>
+          <Link href="/cart">
+            <Menu.Item as="a" className="m-0">
+              <Icon name="cart" />
+              {productsCart > 0 && (
+                <Label color="red" floating circular>
+                  {productsCart}
+                </Label>
+              )}
+            </Menu.Item>
+          </Link>
 
-        <Menu.Item onClick={logout} className="m-0">
-          <Icon name="power off" />
+          <Menu.Item onClick={logout} className="m-0">
+            <Icon name="power off" />
+          </Menu.Item>
+        </>
+      ) : (
+        <Menu.Item onClick={onShowModal}>
+          <Icon name="user outline" />
+          Mi cuenta
         </Menu.Item>
-      </>
-    ) : (
-      <Menu.Item onClick={onShowModal}>
-        <Icon name="user outline" />
-        Mi cuenta
-      </Menu.Item>
-    )}
-  </Menu>
-);
+      )}
+    </Menu>
+  );
+};
 
 export default MenuWeb;

@@ -1,0 +1,28 @@
+.carousel-screenshots {
+  margin: 0em -0.313em;
+
+  .slick-slide {
+    padding: 0.313em;
+
+    .ui.image:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+  }
+
+  .slick-arrow {
+    z-index: 1;
+
+    &:before {
+      font-size: 1.875em;
+    }
+
+    &.slick-next {
+      right: 1.25em;
+    }
+
+    &.slick-prev {
+      left: 1.25em;
+    }
+  }
+}

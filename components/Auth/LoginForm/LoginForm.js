@@ -43,6 +43,7 @@ const LoginForm = ({ showRegisterForm, onCloseModal }) => {
     <Form className="login-form" onSubmit={formik.handleSubmit}>
       <Form.Input
         name="identifier"
+        value="test@test.com"
         type="text"
         placeholder="Email"
         onChange={formik.handleChange}
@@ -50,6 +51,7 @@ const LoginForm = ({ showRegisterForm, onCloseModal }) => {
       />
       <Form.Input
         name="password"
+        value="test123"
         type="password"
         placeholder="Password"
         onChange={formik.handleChange}
@@ -78,8 +80,8 @@ const LoginForm = ({ showRegisterForm, onCloseModal }) => {
 };
 
 const _initialValues = () => ({
-  identifier: "",
-  password: "",
+  identifier: "test@test.com",
+  password: "test123",
 });
 
 const _validationSchema = () => ({

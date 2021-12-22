@@ -18,15 +18,15 @@ export const addProductCart = (product) => {
 
   if (!cart) {
     localStorage.setItem(CART, product);
-    toast.success("Producto añadido al carrito");
+    toast.success("Product added to cart");
   } else {
     const productFound = includes(cart, product);
     if (productFound) {
-      toast.warning("Este producto ya esta en el carrito");
+      toast.warning("This product is already in the cart");
     } else {
       cart.push(product);
       localStorage.setItem(CART, cart);
-      toast.success("Producto añadido correctamente");
+      toast.success("Product added successfully");
     }
   }
 };

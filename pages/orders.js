@@ -45,7 +45,7 @@ const OrderList = (props) => {
   return (
     <Grid>
       {map(orders, (order) => (
-        <Grid.Column key={order} mobile={16} table={6} computer={8}>
+        <Grid.Column key={order} mobile={16} table={8} computer={8}>
           <Order order={order} />
         </Grid.Column>
       ))}

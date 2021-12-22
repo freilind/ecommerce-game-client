@@ -18,7 +18,7 @@ export default Cart;
 const EmptyCart = () => {
   return (
     <BasicLayout className="empty-cart">
-      <h2>No hay productos en el carrito</h2>
+      <h2>There are no products in the cart.</h2>
     </BasicLayout>
   );
 };

@@ -65,7 +65,7 @@ const MyApp = ({ Component, pageProps }) => {
       addProductCart(product);
       setReloadCart(true);
     } else {
-      toast.warning("Para comprar un juego tienes que iniciar sesión");
+      toast.warning("To buy a game you have to log in");
     }
   };
 

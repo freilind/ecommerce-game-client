@@ -1,66 +1,65 @@
 .top-bar {
-    height: 5.625em;
-    background-color: $background-dark;
+  min-height: 5.625em;
+  background-color: $background-dark;
 
-    .ui.grid {
-        margin: 0;
-        padding: 0;
-        .column {
-            padding: 0;
-        }
+  .ui.grid {
+    margin: 0;
+    padding: 0;
+    .column {
+      padding: 0;
+    }
+  }
+
+  &__left {
+    display: flex !important;
+    align-items: center;
+
+    img {
+      height: 3.125em;
+      transition: all 0.5s;
+
+      &:hover {
+        transform: translateX(-1em);
+      }
+    }
+  }
+
+  &__right {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+
+    .ui.icon.input > input {
+      padding-right: 0.313em !important;
     }
 
-    &__left {
-        display: flex !important;
-        align-items: center;
+    .ui.input {
+      align-items: center;
+      margin-right: 1.25em;
 
-        img {
-            height: 3.125em;
-            transition: all 0.5s;
+      input {
+        background-color: transparent !important;
+        border: 0;
+        border-bottom: 0.1em solid $primary !important;
+        border-radius: 0;
+        color: $primary !important;
+        padding: 0.25em 0em !important;
+        width: 12.5em;
+        font-size: 1.2rem;
+        transition: width 0.7s;
+        padding-right: 0em !important;
 
-            &:hover {
-                transform: translateX(-1em);
-            }
+        &:focus {
+          width: 17.5em;
         }
+      }
+
+      i {
+        color: $primary;
+        opacity: 1 !important;
+        font-size: 1.563rem;
+        right: -2em !important;
+      }
     }
-
-    &__right {
-        display: flex !important;
-        align-items: center;
-        justify-content: flex-end;
-
-        .ui.icon.input > input {
-            padding-right: 0.313em !important;
-        }
-
-        .ui.input {
-            align-items: center;
-            margin-right: 1.25em;
-            
-            input {
-                background-color: transparent !important;
-                border: 0;
-                border-bottom: 0.1em solid $primary !important;
-                border-radius: 0;
-                color: $primary !important;
-                padding: 0.25em 0em !important;
-                width: 12.5em;
-                font-size: 1.2rem;
-                transition: width 0.7s;
-                padding-right: 0em !important;
-
-                &:focus {
-                    width: 17.5em;
-                }
-                
-            }
-
-            i {
-                color: $primary;
-                opacity: 1 !important;
-                font-size: 1.563rem;
-                right: -2em !important;
-            }
-        }
-    }
+  }
 }

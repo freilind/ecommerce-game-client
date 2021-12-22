@@ -8,12 +8,22 @@ const TopBar = () => {
     <div className="top-bar">
       <Container>
         <Grid className="top-bar">
-          <Grid.Column width={8} className="top-bar__left">
+          <Grid.Column
+            mobile={16}
+            tablet={8}
+            computer={8}
+            className="top-bar__left"
+          >
             <Icon name="chess knight" color="green" size="big" />
             <Logo />
             <Icon name="chess" color="green" size="big" />
           </Grid.Column>
-          <Grid.Column width={8} className="top-bar__right">
+          <Grid.Column
+            mobile={16}
+            tablet={8}
+            computer={8}
+            className="top-bar__right"
+          >
             <Search />
           </Grid.Column>
         </Grid>
@@ -50,6 +60,6 @@ const Search = () => {
       onChange={(_, data) => setSearchStr(data.value)}
     />
   );
-}
+};
 
 export default TopBar;

@@ -42,16 +42,16 @@ const LoginForm = ({ showRegisterForm, onCloseModal }) => {
   return (
     <Form className="login-form" onSubmit={formik.handleSubmit}>
       <Form.Input
+        label="Email (test@test.com)"
         name="identifier"
-        value="test@test.com"
         type="text"
         placeholder="Email"
         onChange={formik.handleChange}
         error={formik.errors.identifier}
       />
       <Form.Input
+        label="Password (test123)"
         name="password"
-        value="test123"
         type="password"
         placeholder="Password"
         onChange={formik.handleChange}

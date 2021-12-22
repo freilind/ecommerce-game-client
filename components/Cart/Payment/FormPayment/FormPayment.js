@@ -63,7 +63,7 @@ const FormPayment = (props) => {
         </Button>
       </form>
 
-      <table class="ui celled table">
+      <table className="ui celled table">
         <thead>
           <tr>
             <th>Number</th>

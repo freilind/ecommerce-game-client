@@ -34,7 +34,7 @@ const Wishlist = () => {
           {!games && <Loader active>Loading games</Loader>}
           {games && size(games) === 0 && (
             <div className="data__not-found">
-              <h3>You don't have any game on your list.</h3>
+              <h3>You don&apos;t have any game on your list.</h3>
             </div>
           )}
           {size(games) > 0 && <ListGames games={games} />}

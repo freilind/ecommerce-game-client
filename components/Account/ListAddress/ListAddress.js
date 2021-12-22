@@ -5,7 +5,7 @@ import { getAddressesApi, deleteAddressApi } from "../../../api/address";
 import useAuth from "../../../hooks/useAuth";
 
 const ListAddress = (props) => {
-  const { reloadAddreses, setReloadAddreses, openModal } = props;
+  const { userTest, reloadAddreses, setReloadAddreses, openModal } = props;
   const [addresses, setAddresses] = useState(null);
   const { auth, logout } = useAuth();
 
@@ -26,8 +26,9 @@ const ListAddress = (props) => {
       ) : (
         <Grid>
           {map(addresses, (address) => (
-            <Grid.Column key={address.id} mobile={16} tablet={8} computer={4}>
+            <Grid.Column key={address.id} mobile={16} tablet={16} computer={16}>
               <Address
+                userTest={userTest}
                 address={address}
                 logout={logout}
                 setReloadAddreses={setReloadAddreses}
@@ -42,7 +43,7 @@ const ListAddress = (props) => {
 };
 
 const Address = (props) => {
-  const { address, logout, setReloadAddreses, openModal } = props;
+  const { userTest, address, logout, setReloadAddreses, openModal } = props;
   const [loadingDelete, setLoadingDelete] = useState(false);
 
   const deleteAddress = async () => {
@@ -65,11 +66,16 @@ const Address = (props) => {
       <div className="actions">
         <Button
           primary
+          disabled={userTest}
           onClick={() => openModal(`Edit: ${address.title}`, address)}
         >
           Edit
         </Button>
-        <Button onClick={deleteAddress} loading={loadingDelete}>
+        <Button
+          disabled={userTest}
+          onClick={deleteAddress}
+          loading={loadingDelete}
+        >
           Delete
         </Button>
       </div>

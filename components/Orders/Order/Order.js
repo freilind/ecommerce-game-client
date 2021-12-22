@@ -5,7 +5,7 @@ import moment from "moment";
 import "moment/locale/es";
 import BasicModal from "../../Modal/BasicModal";
 
-export default function Order(props) {
+const Order = (props) => {
   const { order } = props;
   const { game, totalPayment, createdAt, addressShipping } = order;
   const { title, poster, url } = game;
@@ -42,9 +42,11 @@ export default function Order(props) {
       />
     </>
   );
-}
+};
 
-function AddressModal(props) {
+export default Order;
+
+const AddressModal = (props) => {
   const { showModal, setShowModal, addressShipping, title } = props;
 
   return (
@@ -54,7 +56,7 @@ function AddressModal(props) {
       size="tiny"
       title={title}
     >
-      <h3>El pedido se ha enviado a la siguiente dirección:</h3>
+      <h3>The order has been sent to the following address:</h3>
       <div>
         <p>{addressShipping.name}</p>
         <p>{addressShipping.address}</p>
@@ -66,4 +68,4 @@ function AddressModal(props) {
       </div>
     </BasicModal>
   );
-}
+};

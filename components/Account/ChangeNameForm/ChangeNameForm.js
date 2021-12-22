@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { updateNameApi } from "../../../api/user";
 
 export default function ChangeNameForm(props) {
-  const { user, logout, setReloadUser } = props;
+  const { userTest, user, logout, setReloadUser } = props;
   const [loading, setLoading] = useState(false);
 
   const formik = useFormik({
@@ -31,6 +31,7 @@ export default function ChangeNameForm(props) {
       <Form onSubmit={formik.handleSubmit}>
         <Form.Group widths="equal">
           <Form.Input
+            disabled={userTest}
             name="name"
             placeholder="New name"
             onChange={formik.handleChange}
@@ -38,6 +39,7 @@ export default function ChangeNameForm(props) {
             error={formik.errors.name}
           />
           <Form.Input
+            disabled={userTest}
             name="lastname"
             placeholder="New lastname"
             onChange={formik.handleChange}
@@ -45,7 +47,12 @@ export default function ChangeNameForm(props) {
             error={formik.errors.lastname}
           />
         </Form.Group>
-        <Button type="submit" className="submit" loading={loading}>
+        <Button
+          disabled={userTest}
+          type="submit"
+          className="submit"
+          loading={loading}
+        >
           Change name
           <span>
             <Icon name="user outline" />

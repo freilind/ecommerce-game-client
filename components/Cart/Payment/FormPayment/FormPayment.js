@@ -3,10 +3,11 @@ import { Button } from "semantic-ui-react";
 import { useRouter } from "next/router";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { toast } from "react-toastify";
-import { size } from "lodash";
+import { size, map } from "lodash";
 import useAuth from "../../../../hooks/useAuth";
 import useCart from "../../../../hooks/useCart";
 import { paymentCartApi } from "../../../../api/cart";
+import { listTdc } from "../../../../data/tdc";
 
 const FormPayment = (props) => {
   const { products, address } = props;
@@ -49,13 +50,42 @@ const FormPayment = (props) => {
     setLoading(false);
   };
 
+  const _options = {
+    value: { postalCode: "10845" },
+  };
+
   return (
-    <form className="form-payment" onSubmit={handleSubmit}>
-      <CardElement />
-      <Button type="submit" loading={loading} disabled={!stripe}>
-        Pay
-      </Button>
-    </form>
+    <>
+      <form className="form-payment" onSubmit={handleSubmit}>
+        <CardElement options={_options} />
+        <Button type="submit" loading={loading} disabled={!stripe}>
+          Pay
+        </Button>
+      </form>
+
+      <table class="ui celled table">
+        <thead>
+          <tr>
+            <th>Number</th>
+            <th>Brand</th>
+            <th>Date</th>
+            <th>CVC</th>
+            <th>Zip</th>
+          </tr>
+        </thead>
+        <tbody>
+          {map(listTdc, (tdc) => (
+            <tr key={tdc.number}>
+              <td data-label="Number">{tdc.number}</td>
+              <td data-label="Brand">{tdc.brand}</td>
+              <td data-label="Date">{tdc.date}</td>
+              <td data-label="CVC">{tdc.cvc}</td>
+              <td data-label="Zip">{tdc.zip}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
   );
 };
 

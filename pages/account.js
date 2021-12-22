@@ -13,6 +13,7 @@ import ListAddress from "../components/Account/ListAddress";
 
 const Account = () => {
   const [user, setUser] = useState(undefined);
+  const [userTest, setUserTest] = useState(false);
   const { auth, logout, setReloadUser } = useAuth();
   const router = useRouter();
 
@@ -20,6 +21,7 @@ const Account = () => {
     (async () => {
       const response = await getMeApi(logout);
       setUser(response || null);
+      setUserTest(response._id === "61c20d864951f76e0ef58d42");
     })();
   }, [auth]);
 
@@ -32,17 +34,18 @@ const Account = () => {
   return (
     <BasicLayout className="account">
       <Configuration
+        userTest={userTest}
         user={user}
         logout={logout}
         setReloadUser={setReloadUser}
       />
-      <Addresses />
+      <Addresses userTest={userTest} />
     </BasicLayout>
   );
 };
 
 const Configuration = (props) => {
-  const { user, logout, setReloadUser } = props;
+  const { userTest, user, logout, setReloadUser } = props;
 
   return (
     <div className="account__configuration">
@@ -50,21 +53,26 @@ const Configuration = (props) => {
       <div className="data">
         <ChangeNameForm
           user={user}
+          userTest={userTest}
           logout={logout}
           setReloadUser={setReloadUser}
         />
-        <ChangeEmailForm
-          user={user}
-          logout={logout}
-          setReloadUser={setReloadUser}
-        />
-        <ChangePasswordForm user={user} logout={logout} />
+        {!userTest && (
+          <>
+            <ChangeEmailForm
+              user={user}
+              logout={logout}
+              setReloadUser={setReloadUser}
+            />
+            <ChangePasswordForm user={user} logout={logout} />
+          </>
+        )}
       </div>
     </div>
   );
 };
 
-const Addresses = () => {
+const Addresses = ({ userTest }) => {
   const [showModal, setShowModal] = useState(false);
   const [titleModal, setTitleModal] = useState("");
   const [formModal, setFormModal] = useState(null);
@@ -91,6 +99,7 @@ const Addresses = () => {
       </div>
       <div className="data">
         <ListAddress
+          userTest={userTest}
           reloadAddreses={reloadAddreses}
           setReloadAddreses={setReloadAddreses}
           openModal={openModal}

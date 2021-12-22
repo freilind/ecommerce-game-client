@@ -6,7 +6,7 @@ import { STRIPE_TOKEN } from "../../../utils/constants";
 
 const stripePrimise = loadStripe(STRIPE_TOKEN, { locale: "en" });
 
-export default function Payment(props) {
+const Payment = (props) => {
   const { products, address } = props;
 
   return (
@@ -19,4 +19,6 @@ export default function Payment(props) {
       </div>
     </div>
   );
-}
+};
+
+export default Payment;
